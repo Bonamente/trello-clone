@@ -79,6 +79,14 @@
                 "namedComponents": "arrow-function",
                 "unnamedComponents": "arrow-function"
             }
+        ],
+        "react/require-default-props": [
+            1,
+            {
+                "forbidDefaultForRequired": false,
+                "classes": "defaultProps",
+                "functions": "ignore"
+            }
         ]
     },
     "settings": {

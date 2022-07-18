@@ -15,9 +15,11 @@ import {
   Task,
 } from './appStateReducer';
 
+import { DragItem } from '../DragItem';
 import { Action } from './actions';
 
 const appData: AppState = {
+  draggedItem: null,
   lists: [
     {
       id: '0',
@@ -38,6 +40,7 @@ const appData: AppState = {
 };
 
 type AppStateContextProps = {
+  draggedItem: DragItem | null,
   lists: List[],
   getTasksByListId(id: string): Task[],
   dispatch: Dispatch<Action>,
@@ -53,14 +56,19 @@ type AppStateProviderProps = {
 
 export const AppStateProvider: FC<AppStateProviderProps> = ({ children }) => {
   const [state, dispatch] = useImmerReducer(appStateReducer, appData);
-  const { lists } = state;
+  const { draggedItem, lists } = state;
 
   const getTasksByListId = (id: string): Task[] | [] => (
     lists.find((list) => list.id === id)?.tasks || []
   );
 
   const contextValue = useMemo(() => (
-    { lists, getTasksByListId, dispatch }), [lists]);
+    {
+      draggedItem,
+      lists,
+      getTasksByListId,
+      dispatch,
+    }), [draggedItem, lists]);
 
   return (
     <AppStateContext.Provider value={contextValue}>

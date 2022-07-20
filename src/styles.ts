@@ -9,7 +9,7 @@ export const AppContainer = styled.div`
   height: 100%;
   padding: 20px;
 
-  background-color: #3179ba;
+  background-color: #9668ed;
 `;
 
 export const CustomDragLayerContainer = styled.div`
@@ -55,7 +55,7 @@ export const ColumnContainer = styled(DragPreviewContainer)`
   margin-right: 20px;
   padding: 8px;
   
-  background-color: #ebecf0;
+  background-color: #ebebf0;
   border-radius: 3px;
 `;
 
@@ -87,18 +87,23 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
   padding: 10px 12px;
   
   text-align: left;
-  color: ${(props) => (props.dark ? '#000' : '#fff')};
+  color: ${(props) => (props.dark ? '#000000' : '#ffffff')};
   
   background-color: #ffffff3d;
-  border: none;
+  border: 1px solid transparent; 
   border-radius: 3px;
   
-  transition: background 85ms ease-in;
-  
+  transition: 0.3s;
+
   cursor: pointer;
 
   &:hover {
-    background-color: #ffffff52;
+    border: 1px solid #000000;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #ffffff69;    
   }
 `;
 
@@ -117,10 +122,19 @@ export const NewItemButton = styled.button`
   text-align: center;
   color: #ffffff;
   
-  background-color: #5aac44;
+  background-color: #4cbb17;
   border: none;
   border-radius: 3px;
   box-shadow: none;
+
+  transition: 0.3s;
+
+  cursor: pointer;
+
+  &:hover,
+  &:focus {    
+    background-color: #7cfc00;
+  }
 `;
 
 export const NewItemInput = styled.input`

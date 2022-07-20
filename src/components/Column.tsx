@@ -4,16 +4,16 @@ import { throttle } from 'throttle-debounce-ts';
 import { ColumnContainer, ColumnTitle } from './styles';
 import { Card } from './Card';
 import { AddNewItem } from './AddNewItem';
-import { useAppState } from './state/AppStateContext';
+import { useAppState } from '../state/AppStateContext';
 import {
   addTask,
   moveList,
   moveTask,
   setDraggedItem,
-} from './state/actions';
+} from '../state/actions';
 
-import { useItemDrag } from './hooks/useItemDrag';
-import { isHidden } from './utils/isHidden';
+import { useItemDrag } from '../hooks/useItemDrag';
+import { isHidden } from '../utils/isHidden';
 
 type ColumnProps = {
   id: string,

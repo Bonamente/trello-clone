@@ -1,5 +1,5 @@
 import { ReactElement, useState } from 'react';
-import { useFocus } from './hooks/useFocus';
+import { useFocus } from '../hooks/useFocus';
 import {
   NewItemFormContainer,
   NewItemButton,

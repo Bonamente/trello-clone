@@ -15,11 +15,11 @@ import {
   Task,
 } from './appStateReducer';
 
-import { DragItem } from '../DragItem';
+import { DragItem } from '../components/DragItem';
 import { Action } from './actions';
-import { save } from '../api';
+import { save } from '../api/api';
 
-import { withInitialState } from '../HOC/withInitialState';
+import { withInitialState } from '../hoc/withInitialState';
 
 type AppStateContextProps = {
   draggedItem: DragItem | null,

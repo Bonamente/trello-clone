@@ -1,4 +1,4 @@
-import { AppState } from './state/appStateReducer';
+import { AppState } from '../state/appStateReducer';
 
 export const save = (payload: AppState): Promise<{ success: true }> => (
   fetch(`${process.env.REACT_APP_BACKEND_ENDPOINT}/save`, {

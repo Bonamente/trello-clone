@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ConnectDragSource, useDrag } from 'react-dnd';
 import { getEmptyImage } from 'react-dnd-html5-backend';
 import { useAppState } from '../state/AppStateContext';
-import { DragItem } from '../DragItem';
+import { DragItem } from '../components/DragItem';
 import { setDraggedItem } from '../state/actions';
 
 export const useItemDrag = (item: DragItem): { drag: ConnectDragSource } => {

@@ -2,10 +2,10 @@ import { FC, ReactElement, useRef } from 'react';
 import { useDrop } from 'react-dnd';
 import { throttle } from 'throttle-debounce-ts';
 import { CardContainer } from './styles';
-import { useItemDrag } from './hooks/useItemDrag';
-import { useAppState } from './state/AppStateContext';
-import { isHidden } from './utils/isHidden';
-import { moveTask, setDraggedItem } from './state/actions';
+import { useItemDrag } from '../hooks/useItemDrag';
+import { useAppState } from '../state/AppStateContext';
+import { isHidden } from '../utils/isHidden';
+import { moveTask, setDraggedItem } from '../state/actions';
 
 type CardProps = {
   id: string,

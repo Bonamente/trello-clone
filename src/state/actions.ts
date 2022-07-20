@@ -1,4 +1,4 @@
-import { DragItem } from '../DragItem';
+import { DragItem } from '../components/DragItem';
 
 export type Action = {
   type: 'ADD_LIST',

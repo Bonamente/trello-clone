@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AppState } from '../state/appStateReducer';
-import { load } from '../api';
+import { load } from '../api/api';
 
 type InjectedProps = {
   initialState: AppState,

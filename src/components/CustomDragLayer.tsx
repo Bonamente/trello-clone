@@ -3,7 +3,7 @@ import { useDragLayer } from 'react-dnd';
 import { Column } from './Column';
 import { Card } from './Card';
 import { CustomDragLayerContainer, DragPreviewWrapper } from './styles';
-import { useAppState } from './state/AppStateContext';
+import { useAppState } from '../state/AppStateContext';
 
 export const CustomDragLayer = (): ReactElement | null => {
   const { draggedItem } = useAppState();

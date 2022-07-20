@@ -1,8 +1,8 @@
 import { FC, ReactElement } from 'react';
-import { AppContainer } from './styles';
-import { CustomDragLayer } from './CustomDragLayer';
-import { Column } from './Column';
-import { AddNewItem } from './AddNewItem';
+import { AppContainer } from './components/styles';
+import { CustomDragLayer } from './components/CustomDragLayer';
+import { Column } from './components/Column';
+import { AddNewItem } from './components/AddNewItem';
 import { useAppState } from './state/AppStateContext';
 import { addList } from './state/actions';
 

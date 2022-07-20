@@ -48,6 +48,7 @@ export const Card: FC<CardProps> = (
 
   return (
     <CardContainer
+      tabIndex={0}
       ref={ref}
       isPreview={isPreview}
       isHidden={isHidden(draggedItem, 'CARD', id, isPreview)}

@@ -51,6 +51,7 @@ export const Column: FC<ColumnProps> = (
 
   return (
     <ColumnContainer
+      tabIndex={0}
       ref={ref}
       isPreview={isPreview}
       isHidden={isHidden(draggedItem, 'COLUMN', id, isPreview)}

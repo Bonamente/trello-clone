@@ -16,6 +16,10 @@ export const AddNewItem: React.FC<AddNewItemProps> = (props): ReactElement => {
     return (
       <NewItemForm
         onAdd={(text) => {
+          if (text === '') {
+            setShowForm(false);
+            return;
+          }
           onAdd(text);
           setShowForm(false);
         }}

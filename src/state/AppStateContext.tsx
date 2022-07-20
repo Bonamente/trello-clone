@@ -1,8 +1,8 @@
 import {
-  FC,
   createContext,
   useContext,
   useMemo,
+  useEffect,
   Dispatch,
 } from 'react';
 
@@ -17,27 +17,9 @@ import {
 
 import { DragItem } from '../DragItem';
 import { Action } from './actions';
+import { save } from '../api';
 
-const appData: AppState = {
-  draggedItem: null,
-  lists: [
-    {
-      id: '0',
-      text: 'To Do',
-      tasks: [{ id: 'c0', text: 'Generate app scaffold' }],
-    },
-    {
-      id: '1',
-      text: 'In Progress',
-      tasks: [{ id: 'c2', text: 'Learn Typescript' }],
-    },
-    {
-      id: '2',
-      text: 'Done',
-      tasks: [{ id: 'c3', text: 'Begin to use static typing' }],
-    },
-  ],
-};
+import { withInitialState } from '../HOC/withInitialState';
 
 type AppStateContextProps = {
   draggedItem: DragItem | null,
@@ -51,31 +33,38 @@ const AppStateContext = createContext<AppStateContextProps>(
 );
 
 type AppStateProviderProps = {
-  children: React.ReactNode;
+  children: React.ReactNode,
+  initialState: AppState,
 }
 
-export const AppStateProvider: FC<AppStateProviderProps> = ({ children }) => {
-  const [state, dispatch] = useImmerReducer(appStateReducer, appData);
-  const { draggedItem, lists } = state;
+export const AppStateProvider = withInitialState<AppStateProviderProps>(
+  ({ children, initialState }) => {
+    const [state, dispatch] = useImmerReducer(appStateReducer, initialState);
+    const { draggedItem, lists } = state;
 
-  const getTasksByListId = (id: string): Task[] | [] => (
-    lists.find((list) => list.id === id)?.tasks || []
-  );
+    const getTasksByListId = (id: string): Task[] | [] => (
+      lists.find((list) => list.id === id)?.tasks || []
+    );
 
-  const contextValue = useMemo(() => (
-    {
-      draggedItem,
-      lists,
-      getTasksByListId,
-      dispatch,
-    }), [draggedItem, lists]);
+    const contextValue = useMemo(() => (
+      {
+        draggedItem,
+        lists,
+        getTasksByListId,
+        dispatch,
+      }), [draggedItem, lists]);
 
-  return (
-    <AppStateContext.Provider value={contextValue}>
-      {children}
-    </AppStateContext.Provider>
-  );
-};
+    useEffect(() => {
+      save(state);
+    }, [state]);
+
+    return (
+      <AppStateContext.Provider value={contextValue}>
+        {children}
+      </AppStateContext.Provider>
+    );
+  },
+);
 
 export const useAppState = (): AppStateContextProps => (
   useContext(AppStateContext)
